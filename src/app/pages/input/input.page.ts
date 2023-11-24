@@ -8,26 +8,30 @@ import { NgForm } from '@angular/forms';
 })
 export class InputPage implements OnInit {
 
-  ngOnInit(): void {
+  nombre: string ="Alberto Reyes";
+  usuario ={
+    email: '',
+    telefono:'',
+    birthday:''
+  }
+  constructor() { }
+
+  ngOnInit() {
   }
 
-  nombre: string ="Alberto Reyes";
-  email: String = '';
-  telefono: String ='';
-  fechaNacimiento: String ='';
-
-  calcularEdad(){
-    const fechaNacimiento = new Date();
-    const fechaActual = new Date();
-    const edad = fechaActual.getFullYear() - fechaNacimiento.getFullYear();
-    
+  onSubmit(formulario: NgForm){
     console.log('submit');
-    console.log('this.usuario');
-    console.log('Nombres:', this.nombre);
-    console.log('Email:', this.email);
-    console.log('Teléfono:', this.telefono);
-    console.log('Fecha de Nacimiento:', this.fechaNacimiento);
+    console.log('Nombre:', this.nombre);
+    console.log('Email:', this.usuario.email);
+    console.log('Telefono:', this.usuario.telefono);
+    console.log('Fecha de Nacimiento:', this.usuario.birthday);
+
+    const fechaNacimientoDate = new Date(this.usuario.birthday);
+    const fechaActual = new Date();
+    const edad = fechaActual.getFullYear() - fechaNacimientoDate.getFullYear();
+
     console.log('Edad:', edad);
-  }  
-  constructor() { }
+
+  }
+
 }
